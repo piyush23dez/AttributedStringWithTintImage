@@ -8,6 +8,10 @@
 
 import UIKit
 
+enum ImagePosition {
+    case start, end
+}
+
 class ViewController: UIViewController {
     
     let label = UILabel(frame: CGRect(origin: CGPoint.zero, size: CGSize(width: 300, height: 300)))
@@ -18,64 +22,66 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //create a label
+        createLabel()
+        
+        createAttributedString(imagePosition: .start, text: " Hello This is string with image", image: UIImage(named: "swift_logo")!)
+        
+        //createAttributedString(imagePosition: .end, text: "Hello This is string with image ", image: UIImage(named: "swift_logo")!)
+
+        //appendImageAtEnd(text: "Hello This is string with image ", image: UIImage(named: "swift_logo")!)
+    }
+    
+    func createLabel() {
         label.numberOfLines = 0
         view.addSubview(label)
         label.center = view.center
         label.textColor = stringColor
+    }
+    
+    func createAttributedString(imagePosition: ImagePosition, text: String, image: UIImage) {
         
+        var range = NSMakeRange(0, 0)
         attachment.bounds = CGRect(origin: CGPoint(x: 0, y: -2), size: CGSize(width: 15, height: 15))
-        appendImageAtStart()
-    }
-    
-    func appendImageAtEnd() {
-        
-        // image must be set to Template rendering mode
-        attachment.image = UIImage(named: "swift_logo")
-        
-        //create a string with image attachment
-        let attachmentString = NSAttributedString(attachment: attachment)
-        
-        //create a title attributed string
-        let title = NSAttributedString(string: "Hello This is string with image ")
-        
-        // Need to use a space, or this bug/feature isn't activated
-        let fullString = NSMutableAttributedString(string: " ")
-        
-        //append title string to full string
-        fullString.append(title)
-        
-        //append attachment string to full string
-        fullString.append(attachmentString)
-        
-        fullString.addAttribute(NSForegroundColorAttributeName, value: imageColor, range: NSMakeRange(0, 1))
-        label.attributedText = fullString
-    }
-    
-    func appendImageAtStart() {
-        
-        // image must be set to Template rendering mode
-        attachment.image = UIImage(named: "swift_logo")
-        
-        //create a string with image attachment
-        let attachmentString = NSAttributedString(attachment: attachment)
-        
-        //create a title attributed string
-        let title = NSAttributedString(string: " Hello this is string with image")
-        
-        // Need to use a space, or this bug/feature isn't activated
-        let fullString = NSMutableAttributedString(string: " ")
-        
-        //append attachment string to full string
-        fullString.append(attachmentString)
-        
-        //append title string to full string
-        fullString.append(title)
-        
-        fullString.addAttribute(NSForegroundColorAttributeName, value: imageColor, range: NSMakeRange(0, 2))
-        label.attributedText = fullString
-    }
 
+        // image must be set to Template rendering mode
+        attachment.image = image
+        
+        //create a string with image attachment
+        let attachmentString = NSAttributedString(attachment: attachment)
+        
+        //create a title attributed string
+        let title = NSAttributedString(string: text)
+        
+        // Need to use a space, or this bug/feature isn't activated
+        let fullString = NSMutableAttributedString(string: " ")
+        
+        switch imagePosition {
+            
+        case .start:
+            //append attachment string to full string
+            fullString.append(attachmentString)
+            
+            //append title string to full string
+            fullString.append(title)
+            
+            //assign range for image
+            range = NSMakeRange(0, 2)
+        case .end:
+            
+            //append title string to full string
+            fullString.append(title)
+            
+            //append attachment string to full string
+            fullString.append(attachmentString)
+            
+            //assign range for image
+            range = NSMakeRange(0, 1)
+        }
+        
+        fullString.addAttribute(NSForegroundColorAttributeName, value: imageColor, range: range)
+        label.attributedText = fullString
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
