@@ -30,7 +30,6 @@ class ViewController: UIViewController {
     
     func appendImageAtEnd() {
         
-        
         // image must be set to Template rendering mode
         attachment.image = UIImage(named: "swift_logo")
         
