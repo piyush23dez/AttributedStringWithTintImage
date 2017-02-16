@@ -12,6 +12,8 @@ class ViewController: UIViewController {
     
     let label = UILabel(frame: CGRect(origin: CGPoint.zero, size: CGSize(width: 300, height: 300)))
     let attachment = NSTextAttachment()
+    let imageColor = UIColor.orange
+    let stringColor = UIColor.green
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,7 +22,7 @@ class ViewController: UIViewController {
         label.numberOfLines = 0
         view.addSubview(label)
         label.center = view.center
-        label.textColor = .green
+        label.textColor = stringColor
         
         attachment.bounds = CGRect(origin: CGPoint(x: 0, y: -2), size: CGSize(width: 15, height: 15))
         appendImageAtStart()
@@ -47,12 +49,12 @@ class ViewController: UIViewController {
         //append attachment string to full string
         fullString.append(attachmentString)
         
-        fullString.addAttribute(NSForegroundColorAttributeName, value: UIColor.orange, range: NSMakeRange(0, 1))
+        fullString.addAttribute(NSForegroundColorAttributeName, value: imageColor, range: NSMakeRange(0, 1))
         label.attributedText = fullString
     }
     
     func appendImageAtStart() {
-                
+        
         // image must be set to Template rendering mode
         attachment.image = UIImage(named: "swift_logo")
         
@@ -71,7 +73,7 @@ class ViewController: UIViewController {
         //append title string to full string
         fullString.append(title)
         
-        fullString.addAttribute(NSForegroundColorAttributeName, value: UIColor.orange, range: NSMakeRange(0, 2))
+        fullString.addAttribute(NSForegroundColorAttributeName, value: imageColor, range: NSMakeRange(0, 2))
         label.attributedText = fullString
     }
 
