@@ -23,12 +23,10 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         createLabel()
-        
+
         createAttributedString(imagePosition: .start, text: " Hello This is string with image", image: UIImage(named: "swift_logo")!)
         
         //createAttributedString(imagePosition: .end, text: "Hello This is string with image ", image: UIImage(named: "swift_logo")!)
-
-        //appendImageAtEnd(text: "Hello This is string with image ", image: UIImage(named: "swift_logo")!)
     }
     
     func createLabel() {
