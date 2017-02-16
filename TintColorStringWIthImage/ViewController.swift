@@ -4,50 +4,75 @@
 //
 //  Created by Piyush Sharma on 2/15/17.
 //  Copyright © 2017 Piyush Sharma. All rights reserved.
-//
+//  https://github.com/Raizlabs/BonMot/issues/105
 
 import UIKit
 
 class ViewController: UIViewController {
     
+    let label = UILabel(frame: CGRect(origin: CGPoint.zero, size: CGSize(width: 300, height: 300)))
+    let attachment = NSTextAttachment()
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
         //create a label
-        let attributesStringLabel = UILabel(frame: CGRect(origin: CGPoint.zero, size: CGSize(width: 300, height: 300)))
-        attributesStringLabel.numberOfLines = 0
-        view.addSubview(attributesStringLabel)
-        attributesStringLabel.center = view.center
-        attributesStringLabel.textColor = .green
+        label.numberOfLines = 0
+        view.addSubview(label)
+        label.center = view.center
+        label.textColor = .green
         
-        //load the image
-        let image = UIImage(named: "swift_logo")!.withRenderingMode(.alwaysTemplate)
+        attachment.bounds = CGRect(origin: CGPoint(x: 0, y: -2), size: CGSize(width: 15, height: 15))
+        appendImageAtStart()
+    }
+    
+    func appendImageAtEnd() {
         
-        // create the text attachment
-        let textAttachment = NSTextAttachment()
         
-        // assign the loaded image to the text attachment
-        textAttachment.image = image
+        // image must be set to Template rendering mode
+        attachment.image = UIImage(named: "swift_logo")
         
-        // create an attributed string with our text attachment
-        let attributedStringWithImage = NSAttributedString(attachment: textAttachment)
+        //create a string with image attachment
+        let attachmentString = NSAttributedString(attachment: attachment)
         
-        // now create the full string to display
-        let stringToDisplay = "This string has a image with color"
-        let fullAttributedString = NSMutableAttributedString(string: "\(stringToDisplay) ")
+        //create a title attributed string
+        let title = NSAttributedString(string: "Hello This is string with image ")
         
-        // append space the string to display with our string containing the image
-        fullAttributedString.append(attributedStringWithImage)
+        // Need to use a space, or this bug/feature isn't activated
+        let fullString = NSMutableAttributedString(string: " ")
         
-        // color the image part of the string
-        fullAttributedString.addAttribute(
-            NSForegroundColorAttributeName,
-            value: UIColor.gray,
-            range: NSMakeRange(
-                stringToDisplay.characters.distance(from: stringToDisplay.startIndex, to: stringToDisplay.endIndex), attributedStringWithImage.length))
+        //append title string to full string
+        fullString.append(title)
         
-        // assign it to the label
-        attributesStringLabel.attributedText = fullAttributedString
+        //append attachment string to full string
+        fullString.append(attachmentString)
+        
+        fullString.addAttribute(NSForegroundColorAttributeName, value: UIColor.orange, range: NSMakeRange(0, 1))
+        label.attributedText = fullString
+    }
+    
+    func appendImageAtStart() {
+                
+        // image must be set to Template rendering mode
+        attachment.image = UIImage(named: "swift_logo")
+        
+        //create a string with image attachment
+        let attachmentString = NSAttributedString(attachment: attachment)
+        
+        //create a title attributed string
+        let title = NSAttributedString(string: " Hello this is string with image")
+        
+        // Need to use a space, or this bug/feature isn't activated
+        let fullString = NSMutableAttributedString(string: " ")
+        
+        //append attachment string to full string
+        fullString.append(attachmentString)
+        
+        //append title string to full string
+        fullString.append(title)
+        
+        fullString.addAttribute(NSForegroundColorAttributeName, value: UIColor.orange, range: NSMakeRange(0, 2))
+        label.attributedText = fullString
     }
 
     override func didReceiveMemoryWarning() {
