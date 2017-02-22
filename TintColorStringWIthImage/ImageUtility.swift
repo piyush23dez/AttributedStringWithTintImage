@@ -40,7 +40,7 @@ class ImageUtility {
             //append attachment string to full string
             fullString.append(attachmentString)
             
-            //append title string to full string
+            //append title to the start of text provided
             fullString.append(title)
             
             //assign range for image
@@ -54,6 +54,7 @@ class ImageUtility {
             //append attachment string to full string
             fullString.append(attachmentString)
             
+            //append image to the end of text provided
             title.append(fullString)
             
             //assign range for image
