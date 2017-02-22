@@ -9,19 +9,21 @@
 /* Begin PBXBuildFile section */
 		4B15CC2E1E5539FA003F44C0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B15CC2D1E5539FA003F44C0 /* AppDelegate.swift */; };
 		4B15CC301E5539FA003F44C0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B15CC2F1E5539FA003F44C0 /* ViewController.swift */; };
-		4B15CC351E5539FA003F44C0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4B15CC341E5539FA003F44C0 /* Assets.xcassets */; };
 		4B15CC381E5539FA003F44C0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4B15CC361E5539FA003F44C0 /* LaunchScreen.storyboard */; };
 		4B15CC421E553EF5003F44C0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4B15CC411E553EF5003F44C0 /* Main.storyboard */; };
+		4B6465FB1E5CF9260088C55C /* ImageUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B6465FA1E5CF9260088C55C /* ImageUtility.swift */; };
+		4B77CF3B1E5D0D64006481B8 /* image.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4B77CF3A1E5D0D64006481B8 /* image.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		4B15CC2A1E5539FA003F44C0 /* TintColorStringWIthImage.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TintColorStringWIthImage.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4B15CC2D1E5539FA003F44C0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4B15CC2F1E5539FA003F44C0 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		4B15CC341E5539FA003F44C0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4B15CC371E5539FA003F44C0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4B15CC391E5539FA003F44C0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4B15CC411E553EF5003F44C0 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		4B6465FA1E5CF9260088C55C /* ImageUtility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageUtility.swift; sourceTree = "<group>"; };
+		4B77CF3A1E5D0D64006481B8 /* image.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = image.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,7 +58,8 @@
 			children = (
 				4B15CC2D1E5539FA003F44C0 /* AppDelegate.swift */,
 				4B15CC2F1E5539FA003F44C0 /* ViewController.swift */,
-				4B15CC341E5539FA003F44C0 /* Assets.xcassets */,
+				4B77CF3A1E5D0D64006481B8 /* image.xcassets */,
+				4B6465FA1E5CF9260088C55C /* ImageUtility.swift */,
 				4B15CC411E553EF5003F44C0 /* Main.storyboard */,
 				4B15CC361E5539FA003F44C0 /* LaunchScreen.storyboard */,
 				4B15CC391E5539FA003F44C0 /* Info.plist */,
@@ -96,7 +99,7 @@
 				TargetAttributes = {
 					4B15CC291E5539FA003F44C0 = {
 						CreatedOnToolsVersion = 8.3;
-						ProvisioningStyle = Automatic;
+						ProvisioningStyle = Manual;
 					};
 				};
 			};
@@ -123,8 +126,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4B77CF3B1E5D0D64006481B8 /* image.xcassets in Resources */,
 				4B15CC381E5539FA003F44C0 /* LaunchScreen.storyboard in Resources */,
-				4B15CC351E5539FA003F44C0 /* Assets.xcassets in Resources */,
 				4B15CC421E553EF5003F44C0 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -138,6 +141,7 @@
 			files = (
 				4B15CC301E5539FA003F44C0 /* ViewController.swift in Sources */,
 				4B15CC2E1E5539FA003F44C0 /* AppDelegate.swift in Sources */,
+				4B6465FB1E5CF9260088C55C /* ImageUtility.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -254,7 +258,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = TintColorStringWIthImage/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.apple.TintColorStringWIthImage;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -266,7 +273,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = TintColorStringWIthImage/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.apple.TintColorStringWIthImage;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -293,6 +303,7 @@
 				4B15CC3E1E5539FA003F44C0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
